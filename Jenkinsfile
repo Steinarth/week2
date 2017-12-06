@@ -2,6 +2,7 @@ node {
     checkout scm
     stage('Build') {
         echo 'Running tests.....3 '
+        sh 'pwd'
         sh 'npm install'
         sh 'npm run test'
     }
