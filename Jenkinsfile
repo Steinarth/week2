@@ -3,7 +3,7 @@ node {
     stage('Build') {
         echo 'Running tests 2'
         sh 'npm install'
-        sh 'npm run test'
+        sh 'npm run jenkinserverstest'
     }
     stage('Test') {
         echo 'Testing..'
