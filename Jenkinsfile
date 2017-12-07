@@ -7,7 +7,7 @@ node {
         dir ('client') {
           sh 'pwd'
           sh 'npm install'
-          sh 'npm run test'
+          sh 'npm run jenkinsclienttest'
         }
     }
     stage('Test') {
