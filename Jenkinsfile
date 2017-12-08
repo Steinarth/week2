@@ -17,6 +17,6 @@ node {
     }
 
     stage('Deploy') {
-        sh './dockerbuild.sh && cd provisioning && ./provision-new-environment.sh'
+        sh ' cd provisioning && ./provision-new-environment.sh'
     }
 }
