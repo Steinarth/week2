@@ -14,7 +14,7 @@ node {
     }
     stage('Build') {
       echo '***Pushing to docker-hub***'
-      
+      sh './dockerbuild.sh'      
     }
     stage('Test') {
         echo 'Testing..'
