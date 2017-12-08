@@ -162,3 +162,45 @@
       ];
   });
   });
+
+  describe('Place move', function(){
+    let given, when, then;
+
+    beforeEach(function () {
+        given = undefined;
+        when = undefined;
+        then = undefined;
+    });
+
+    afterEach(function (){
+      tictactoe(given).executeCommand(when, function (actualEvents) {
+          should(JSON.stringify(actualEvents)).be.exactly(JSON.stringify(then));
+      });
+    });
+
+    it('should emit MovePlaced on first game move', function(){
+      given = [ createEvent, joinEvent ];
+      when = {
+          "gameId":"fiskur",
+          "type": "PlaceMove",
+          "user": { "userName": "TheGuy" },
+          "name": "UberGame",
+          "timeStamp": "2016-12-07T20:56:29",
+          "commandId": "003",
+          "side": "X",
+          "coordinates": { "x": 0, "y": 0 }
+      };
+      then = [{
+          "gameId": "fiskur",
+          "type": "MoveMade",
+          "user": { "userName": "TheGuy" },
+          "name": "UberGame",
+          "timeStamp": "2016-12-07T20:56:29",
+          "commandId": "003",
+          "side": "X",
+          "coordinates": { "x": 0, "y": 0 }
+      }];
+});
+
+
+  });

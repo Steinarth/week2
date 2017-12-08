@@ -3,7 +3,6 @@ module.exports = function(injected){
     let TictactoeState = injected('TictactoeState');
 
     return function(history){
-
         let gameState = TictactoeState(history);
 
         return {
@@ -58,6 +57,19 @@ module.exports = function(injected){
                         }]);
                     },
                     "PlaceMove": function(cmd){
+                        //if(!gameState.playerTurn(cmd.side)){
+                          applyEvents([{
+                            gameId: cmd.gameId,
+                            type: "MoveMade",
+                            user: cmd.user,
+                            name: cmd.name,
+                            timeStamp: cmd.timeStamp,
+                            commandId: cmd.commandId,
+                            side: cmd.side,
+                            coordinates: cmd.coordinates,
+                          }]);
+                        //}
+                          return;
 
 
                         // Check here for conditions which prevent command from altering state
@@ -78,4 +90,3 @@ module.exports = function(injected){
         }
     }
 };
-

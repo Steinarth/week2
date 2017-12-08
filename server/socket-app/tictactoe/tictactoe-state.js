@@ -20,11 +20,16 @@ module.exports = function (injected) {
           return gamefull;
         }
 
+        function playerTurn(side){
+          return side == 'O';
+        }
+
         processEvents(history);
 
         return {
             gameFull:gameFull,
             processEvents: processEvents,
-        } 
+             playerTurn: playerTurn
+        }
     };
 };
