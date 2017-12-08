@@ -4,7 +4,7 @@ set -e
 
 if [ -z "$GIT_COMMIT" ];
 then
-    export GIT_COMMIT='da2f19126787dd312a33f3178f397f5e2b6f55e1'
+    export GIT_COMMIT='67f67d7a70debf39184f4b6f1655c2f263bfbb9b'
 fi
 
 INSTANCE_ID=$(cat ./ec2_instance/instance-id.txt)
