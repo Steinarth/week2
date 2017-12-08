@@ -4,8 +4,10 @@ set -e
 
 if [ -z "$GIT_COMMIT" ];
 then
-    export GIT_COMMIT='67f67d7a70debf39184f4b6f1655c2f263bfbb9b'
+    export GIT_COMMIT=$(git rev-parse HEAD)
 fi
+
+GIT_COMMIT=$(git rev-parse HEAD)
 
 INSTANCE_ID=$(cat ./ec2_instance/instance-id.txt)
 INSTANCE_PUBLIC_NAME=$(cat ./ec2_instance/instance-public-name.txt)

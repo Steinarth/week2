@@ -10,16 +10,13 @@ node {
         sh 'npm run jenkinsclienttest'
       }
 
-
     }
     stage('Build') {
       echo '***Pushing to docker-hub***'
       sh './dockerbuild.sh'
     }
-    stage('Test') {
-        echo 'Testing..'
-    }
+
     stage('Deploy') {
-        echo 'Deploying....'
+        sh './dockerbuild.sh && cd provisioning && ./provision-new-environment.sh'
     }
 }
