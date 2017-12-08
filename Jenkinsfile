@@ -14,7 +14,6 @@ node {
     }
     stage('Build') {
       echo '***Pushing to docker-hub***'
-      sh 'docker login -u hgopworker -p Karamella1234#'
       sh './dockerbuild.sh'
     }
     stage('Test') {
