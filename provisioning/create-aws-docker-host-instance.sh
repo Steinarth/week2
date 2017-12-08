@@ -10,7 +10,7 @@ echo No instance information present, continuing.
 [ -d "${INSTANCE_DIR}" ] || mkdir ${INSTANCE_DIR}
 
 USERNAME=$(aws iam get-user --query 'User.UserName' --output text)
-
+echo ${USERNAME}
 SECURITY_GROUP_NAME=hgop-${USERNAME}
 
 echo "Using security group name ${SECURITY_GROUP_NAME}"
@@ -42,7 +42,7 @@ if [ ! -e ./ec2_instance/instance-id.txt ]; then
     echo Waiting for instance to be running
     echo aws ec2 wait --region eu-west-2 instance-running --instance-ids ${INSTANCE_ID}
     aws ec2 wait --region eu-west-2 instance-running --instance-ids ${INSTANCE_ID}
-    echo EC2 instance ${INSTANCE_ID} ready and available on ${INSTANCE_PUBLIC_NAME}
+    echo EC2 instance ${INSTANCE_ID} ready and available  on ${INSTANCE_PUBLIC_NAME}
 fi
 
 if [ ! -e ./ec2_instance/instance-public-name.txt ]; then
