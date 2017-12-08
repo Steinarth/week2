@@ -13,10 +13,6 @@ node {
       
     }
     stage('Build') {
-      echo '***Cleaning docker images and containers ***'
-      sh 'npm run rmdockerc'
-      sh 'npm run rmdockeri'
-
       echo '***Pushing to docker-hub***'
       
     }
