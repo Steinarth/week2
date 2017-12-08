@@ -1,20 +1,20 @@
 node {
     checkout scm
     stage('Test'){
-      sh 'npm install'
+      sh 'yarn install'
       echo '***Running server tests***'
       sh 'npm run jenkinserverstest'
       dir ('client') {
-        sh 'npm install'
+        sh 'yarn install'
         echo '***Running client tests***'
         sh 'npm run jenkinsclienttest'
       }
 
-      
+
     }
     stage('Build') {
       echo '***Pushing to docker-hub***'
-      sh './dockerbuild.sh'      
+      sh './dockerbuild.sh'
     }
     stage('Test') {
         echo 'Testing..'
