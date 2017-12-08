@@ -45,6 +45,5 @@
     "jenkinserverstest": "export NODE_PATH=. && ./node_modules/.bin/jasmine JASMINE_CONFIG_PATH=./jasmine.json",
     "rmdockerc": "docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)",
     "rmdockeri": "docker rmi -f $(docker images -q)"
-
   }
 }
