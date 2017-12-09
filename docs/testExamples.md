@@ -4,7 +4,7 @@ Test examples
 #### Feature: Create Game
 Scenario:  Create a new game
   * Given nothing
-  * When  user creates i game
+  * When  user creates a game
   * Then  a game is created
 
 #### Feature: Join game
