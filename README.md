@@ -13,7 +13,7 @@ However i did implement the features : Join game, and Place move.
 ### Jenkinsfile, and the pipeline
 Unfortunately i was not able to deploy the application in the deployment pipeline.  
 However it does run all tests, build the project and push to dockerhub.   
-**Update**: For some strange reason there seems to be a problem with memory allocation (started today: 09.12.17) on the ec2 instance   
+**Update**: For some strange reason there seems to be a problem with memory allocation (started today: 09.12.17) on the ec2 instance but only sometimes  
 Err Message: Rebalance Allocation failed - process out of memory
 
 ## Application for HGOP 2017 Student project
