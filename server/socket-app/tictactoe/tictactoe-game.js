@@ -57,7 +57,18 @@ module.exports = function(injected){
                         }]);
                     },
                     "PlaceMove": function(cmd){
-                        //if(!gameState.playerTurn(cmd.side)){
+                        if(!gameState.emptyCell(cmd.coordinates.x,cmd.coordinates.y)){
+                          applyEvents({
+                            gameId: cmd.gameId,
+                            type: "IllegalMove",
+                            user: cmd.user,
+                            timeStamp: cmd.timeStamp,
+                            commandId: cmd.commandId,
+                            side: cmd.side,
+                          });
+                            return;
+                          }
+
                           applyEvents([{
                             gameId: cmd.gameId,
                             type: "MoveMade",
@@ -68,8 +79,6 @@ module.exports = function(injected){
                             side: cmd.side,
                             coordinates: cmd.coordinates,
                           }]);
-                        //}
-                          return;
 
 
                         // Check here for conditions which prevent command from altering state

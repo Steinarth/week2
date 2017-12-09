@@ -202,5 +202,34 @@
       }];
 });
 
+      it('should emit IllegalMove when square is already occupied', function(){
+        given = [ createEvent, joinEvent,{
+          "gameId":"fiskur",
+          "type": "MoveMade",
+          "user": { "userName": "TheGuy" },
+          "timeStamp": "2016-12-07T20:56:29",
+          "commandId": "003",
+          "side": "X",
+          "coordinates": { "x": 0, "y": 0 }
+        }];
+        when = {
+          "gameId":"fiskur",
+          "type": "PlaceMove",
+          "user": { "userName": "Gummi" },
+          "timeStamp": "2016-12-07T20:56:30",
+          "commandId": "004",
+          "side": "O",
+          "coordinates": { "x": 0, "y": 0 }
+        };
+        then = {
+          "gameId":"fiskur",
+          "type": "IllegalMove",
+          "user": { "userName": "Gummi" },
+          "timeStamp": "2016-12-07T20:56:30",
+          "commandId": "004",
+          "side": "O"
+        }
+      });
+
 
   });
