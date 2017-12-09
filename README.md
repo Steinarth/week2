@@ -7,7 +7,8 @@ Here is a link with the summary of the steps taken setting up Jenkins on an AWS 
 Here is the test script from day 7 [test example](docs/testExamples.md)      
 
 ### Implementation of game logic and tests in placeholder files in the project.
-Unfortunately i was not able to finish the implementation&tests of wins in the project, since i could not figure out the error message i got. 
+Unfortunately i was not able to finish the implementation&tests of wins in the project, since i could not figure out the error message i got, and therefor i did not push it to github.
+However i did implement the features : Join game, and Place move.
 
 ### Jenkinsfile, and the pipeline
 Unfortunately i was not able to deploy the application in the deployment pipeline.  
