@@ -1,10 +1,19 @@
-## Application for HGOP 2017 Student project
-
+## Comments about the Assignment
 
 ### Setting up Jenkins
 Here is a link with the summary of the steps taken setting up Jenkins on an AWS instance [Jenkins setup](jenkins.md)
 
+### testExample (test scripts)
+Here is the test script from day 7 [test example](docs/testExamples.md)      
 
+### Implementation of game logic and tests in placeholder files in the project.
+Unfortunately i was not able to finish the implementation&tests of wins in the project, since i could not figure out the error message i got. 
+
+### Jenkinsfile, and the pipeline
+Unfortunately i was not able to deploy the application in the deployment pipeline.  
+However it does run all tests, build the project and push to dockerhub. 
+
+## Application for HGOP 2017 Student project
 Global installation requirements:
 
 
