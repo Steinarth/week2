@@ -57,28 +57,39 @@ module.exports = function(injected){
                         }]);
                     },
                     "PlaceMove": function(cmd){
-                        if(!gameState.emptyCell(cmd.coordinates.x,cmd.coordinates.y)){
-                          applyEvents({
-                            gameId: cmd.gameId,
-                            type: "IllegalMove",
-                            user: cmd.user,
-                            timeStamp: cmd.timeStamp,
-                            commandId: cmd.commandId,
-                            side: cmd.side,
-                          });
-                            return;
-                          }
+                      if(!gameState.emptyCell(cmd.coordinates.x,cmd.coordinates.y)){
+                        applyEvents({
+                          gameId: cmd.gameId,
+                          type: "IllegalMove",
+                          user: cmd.user,
+                          timeStamp: cmd.timeStamp,
+                          commandId: cmd.commandId,
+                          side: cmd.side,
+                        });
+                        return;
+                      }
 
-                          applyEvents([{
-                            gameId: cmd.gameId,
-                            type: "MoveMade",
-                            user: cmd.user,
-                            name: cmd.name,
-                            timeStamp: cmd.timeStamp,
-                            commandId: cmd.commandId,
-                            side: cmd.side,
-                            coordinates: cmd.coordinates,
-                          }]);
+                      if(!gameState.playerTurn(cmd.side)){
+                        applyEvents({
+                          gameId: cmd.gameId,
+                          type: "NotYourMove",
+                          user: cmd.user,
+                          side: cmd.side,
+                          timeStamp: cmd.timeStamp
+                        });
+                        return;
+                      }
+
+                        applyEvents([{
+                          gameId: cmd.gameId,
+                          type: "MovePlaced",
+                          user: cmd.user,
+                          name: cmd.name,
+                          timeStamp: cmd.timeStamp,
+                          commandId: cmd.commandId,
+                          side: cmd.side,
+                          coordinates: cmd.coordinates,
+                        }]);
 
 
                         // Check here for conditions which prevent command from altering state

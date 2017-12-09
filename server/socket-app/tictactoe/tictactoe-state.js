@@ -3,7 +3,7 @@ const _ = require('lodash');
 module.exports = function (injected) {
 
     return function (history) {
-      side = 'O';
+      xorY = 'X';
       var gamefull=false;
       var table = [
         [0,0,0],
@@ -16,10 +16,10 @@ module.exports = function (injected) {
             gamefull=true;
           }
 
-          if(event.type==="MoveMade") {
-               if ((table)[event.coordinates.x][event.coordinates.y] === 0) {
-                   (table)[event.coordinates.x][event.coordinates.y] = event.side;
-                   side = event.side;
+          if(event.type==="MovePlaced") {
+               if (table[event.coordinates.x][event.coordinates.y] === 0) {
+                   table[event.coordinates.x][event.coordinates.y] = event.side;
+                   (xorY === 'X') ? xorY='O' : xorY='X';
                }
           }
         }
@@ -33,7 +33,7 @@ module.exports = function (injected) {
         }
 
         function playerTurn(side){
-          return side;
+          return xorY == side;
         }
 
         function emptyCell(x,y) {
@@ -45,8 +45,8 @@ module.exports = function (injected) {
         return {
             gameFull:gameFull,
             processEvents: processEvents,
-            playerTurn: playerTurn,
-            emptyCell:emptyCell
+            emptyCell:emptyCell,
+            playerTurn: playerTurn
         }
     };
 };

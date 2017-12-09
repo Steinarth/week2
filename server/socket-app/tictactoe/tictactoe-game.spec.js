@@ -192,7 +192,7 @@
       };
       then = [{
           "gameId": "fiskur",
-          "type": "MoveMade",
+          "type": "MovePlaced",
           "user": { "userName": "TheGuy" },
           "name": "UberGame",
           "timeStamp": "2016-12-07T20:56:29",
@@ -205,7 +205,7 @@
       it('should emit IllegalMove when square is already occupied', function(){
         given = [ createEvent, joinEvent,{
           "gameId":"fiskur",
-          "type": "MoveMade",
+          "type": "MovePlaced",
           "user": { "userName": "TheGuy" },
           "timeStamp": "2016-12-07T20:56:29",
           "commandId": "003",
@@ -231,5 +231,34 @@
         }
       });
 
+      it('Should emit NotYourMove if attempting to make move out of turn', function(){
+        given = [ createEvent, joinEvent,{
+          "gameId":"fiskur",
+          "type": "MovePlaced",
+          "user": { "userName": "TheGuy" },
+          "timeStamp": "2016-12-07T20:56:29",
+          "commandId": "003",
+          "side": "X",
+          "coordinates": { "x": 0, "y": 0 }
+        }];
+        when = {
+          "gameId":"fiskur",
+          "type": "PlaceMove",
+          "user": { "userName": "TheGuy" },
+          "timeStamp": "2016-12-07T20:56:30",
+          "commandId": "004",
+          "side": "X",
+          "coordinates": { "x": 1, "y": 0 }
+        };
+        then = {
+          "gameId":"fiskur",
+          "type": "NotYourMove",
+          "user": { "userName": "TheGuy" },
+          "side": "X",
+          "timeStamp": "2016-12-07T20:56:30"
+        }
+      });
+
+// Should emit NotYourMove if attempting to make move out of turn
 
   });
